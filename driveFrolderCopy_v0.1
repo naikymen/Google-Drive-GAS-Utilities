@@ -1,12 +1,11 @@
-# Tiny google script for copying folders in google drive
-
 function driveFolderCopy() {
   
-  var sourceFolder = "LALALALALALALALALALAL"; //Id of the folder to copy
+  var sourceFolder = "CHANGE THIS"; //Source folder ID, CHANGE THIS.
   var source = DriveApp.getFolderById(sourceFolder);
   
-  var targetParentFolder = DriveApp.getFolderById("LOLOLLOLOLOLOLOLOLOLOL"); //Parent folder to copy into
-  var target = targetParentFolder.createFolder(source.getName().concat("_copy"));
+  var targetParentFolderId  = "ALSO THIS"  //Destination parent folder ID, CHANGE THIS.
+  var targetParentFolder = DriveApp.getFolderById(targetParentFolderId);
+  var target = targetParentFolder.createFolder(source.getName().concat("_copy"));  //Add a string at the end of the new folder
   
   copyFolder(source, target);
   
