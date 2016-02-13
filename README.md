@@ -13,7 +13,7 @@ Use the Chrome OS file manager, it is much simpler if you can use it on your com
 I know no other ways to do this than installing chrome OS, which may not be simpler at all.
 
 # Warnings
-I have not tested this with large folders and many files, only as much as 300 files per run, but not always.
+I have not tested this thotoughly with large folders and many files, only as much as 300 files per run, but not always.
 
 # Would like to do, but don´t know how
 Have it work from the contextual menu that appears in the drive web interface, i.e. Right Click a folder > "Open With" > "Connecto more apps".
