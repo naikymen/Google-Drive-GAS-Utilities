@@ -12,7 +12,7 @@ function uploadFileToGoogleDrive(data, filename, nombre, turno, tp, docente, ema
   try {
     
     var dropbox = "modify here!";
-    var commenterEmail = "modify here!";
+    var commentersGoogleGroupEmail = "modify here!";
     var spreadsheetLogId = "modify here!"
     var folder = DriveApp.getFolderById(dropbox);
     
@@ -67,7 +67,7 @@ function uploadFileToGoogleDrive(data, filename, nombre, turno, tp, docente, ema
     // Share to everyone
     Drive.Permissions.insert(permissionsResource, fileId);
     // Share to commenters
-    permissionInsertSilentGroupCommenter(fileId, commenterEmail);
+    permissionInsertSilentGroupCommenter(fileId, commentersGoogleGroupEmail);
     
     return "OK";
     
