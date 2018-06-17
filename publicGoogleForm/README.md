@@ -8,6 +8,11 @@ It shares the attachment with the submitter's email account.
 
 Please note that I am a noob, and that some functions or variables have names in spanish.
 
+## Usage
+The .html form collects data, calls a function onSubmit, which passes the submission to the GAS code.
+
+There are two versions: "normal api" and "drive api" which differ somewhat in features. The latter handles file sharing permissions to a group of commenters and makes the file publicly available to any viewer, and the form has an extra field.
+
 ## Notes
 The GAS structure is based on this code https://ctrlq.org/code/19747-google-forms-upload-files.
 I kept the handy validation function, which limits attachment file size and returns error information.
