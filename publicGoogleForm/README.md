@@ -11,7 +11,11 @@ Please note that I am a noob, and that some functions or variables have names in
 ## Usage
 The .html form collects data, calls a function onSubmit, which passes the submission to the GAS code.
 
-There are two versions: "normal api" and "drive api" which differ somewhat in features. The latter handles file sharing permissions to a group of commenters and makes the file publicly available to any viewer, and the form has an extra field.
+The GAS code creates a file, logs the submission to a spreadsheet and sends a confirmation email to the submitter (using the email they provide in the form).
+
+There are two versions: "normal api" and "drive api" which differ somewhat in features.
+
+The latter handles file sharing permissions to a group of commenters and makes the file publicly available to any viewer, and the corresponding form has an extra field.
 
 ## Notes
 The GAS structure is based on this code https://ctrlq.org/code/19747-google-forms-upload-files.
