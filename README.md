@@ -9,7 +9,7 @@ I reused the code here, adapted for my needs: https://ctrlq.org/code/19979-copy-
 5. Give it permissions and run it.
 
 # Usage (Triggered Copy)
-I made this because of execution timeouts for large folders. It automatically grabs all (small) folders in the desired (heavy) folder and copies them to the (target) folder of your choice. The system is implemented as proposed in stackexchange, but using a spreadsheet to track progress and log errors. It also removes (inmensely annoying) diacritics from file and folder names.
+I made this because of execution timeouts for large folders. It automatically grabs all subfolders in the desired (larger) folder and copies them to the (target) folder of your choice. The system is implemented as proposed in stackexchange, but using a spreadsheet to track progress and log errors. It also removes (inmensely annoying) diacritics from file and folder names.
 1. Check that it will do what you need.
 2. Make your own google apps script, copy the contents into it.
 3. Make your own google spreadsheet (and put a 0 in the first row).
