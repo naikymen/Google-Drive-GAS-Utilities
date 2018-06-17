@@ -36,7 +36,7 @@ Have it work from the contextual menu that appears in the drive web interface, i
 # Usage (Form)
 Choose a version and import the code and html to a google script.
 
-Change the variables as it suites your case.
+Change the variables as it suits your case.
 
 Deploy as web app, allowing anyone (or whoever) to execute the app as you.
 
