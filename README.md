@@ -1,5 +1,8 @@
-# driveFolderCopy
+# Simple GAS Tools for Google Drive
 I reused the code here, adapted for my needs: https://ctrlq.org/code/19979-copy-folders-drive. Differences are that this works. Initially i could not get it to work without modification.
+## What may find here:
+Functions to change ownerships and copy files or folders, individually or recursively.
+Functions to log these actions in a Google Spreadsheet.
 
 # Usage (Simple Copy)
 1. Check that it will do what you need.
