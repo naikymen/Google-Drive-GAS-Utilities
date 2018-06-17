@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <base>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google File Upload</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    
+    <script>
+      $(document).ready(function(){
+        $('select').formSelect();
+        
+        $("select[required]").css({
+          display: "inline",
+          height: 0,
+          padding: 0,
+          width: 0
+          });
+      });
+    </script>
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    
+    
+  </head>
+  <body>
+    <form class="main" id="form" style="max-width: 480px;margin: 40px auto;" onsubmit="submitForm(); return false;">
+      <div id="forminner">
+      
+        <div class="row">
+          <div class="col s12">
+          <h5 class="center-align teal-text">Entrega de informes de TP de Química General</h5>
+          <p class="center-align"> Este formulario fue hecho con Google Scripts.</p>
+          </div>
+        </div>
+      
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+            
+              <div class="input-field col s12">
+                <input id="nombre" name="Nombre" type="text" class="validate" required="" aria-required="true">
+                <label for="nombre">Nombre y Apellido</label>
+              </div>
+              
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" required="" aria-required="true">
+                <label for="email">Email</label>
+              </div>
+              
+              <div class="input-field col s12">
+                <select id="turno" name="Turno" required="" aria-required="true">
+                  <option value="" disabled selected>Seleccioná el Turno</option>
+                  <option value="1A">1A</option>
+                  <option value="1B">1B</option>
+                  <option value="2A">2A</option>
+                  <option value="2B">2B</option>
+                  <option value="3A">3A</option>
+                  <option value="3B">3B</option>
+                  <option value="4A">4A</option>
+                  <option value="4B">4B</option>
+                  <option value="5A">5A</option>
+                  <option value="5B">5B</option>
+                  <option value="6A">6A</option>
+                  <option value="6B">6B</option>
+                  <option value="7A">7A</option>
+                  <option value="7B">7B</option>
+                  <option value="8A">8A</option>
+                  <option value="8B">8B</option>
+                  <option value="9A">9A</option>
+                  <option value="9B">9B</option>
+                  <option value="10A">10A</option>
+                  <option value="10B">10B</option>
+                </select>
+                <label>Turno en el que cursaste el TP</label>
+              </div>
+              
+              <div class="input-field col s12">
+                <select id="docente" name="Docente" required="" aria-required="true">
+                  <option value="" disabled selected>Seleccioná el nombre de tu Docente</option>
+                  <option value="T1">Teacher 1</option>
+                  <option value="T2">Teacher 2</option>
+                  <option value="T3">Teacher 3</option>
+                </select>
+                <label>Docente con quien trabajaste en ese turno</label>
+              </div>
+
+              <div class="input-field col s12">
+                <select id="tp" name="TP" required="" aria-required="true">
+                  <option value="" disabled selected>Seleccioná el TP que enviás</option>
+                  <option value="TP1">TP1: Soluciones</option>
+                  <option value="TP2">TP2: Termoquímica</option>
+                  <option value="TP3">TP3: Ácido-Base</option>
+                </select>
+                <label>Número de TP que estás enviando</label>
+              </div>
+              
+              
+              <div class="file-field input-field col s12">
+                <div class="btn">
+                  <span>Subir archivo</span>
+                  <input id="files" type="file" required="" aria-required="true">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Seleccioná el archivo del informe (en .PDF)">
+                </div>
+              </div>
+              
+              <div class="input-field col s6">
+                <button class="waves-effect waves-light btn submit-btn red" type="submit" value="Entregar">Entregar</button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      
+        <div class="row">
+          <div class="input-field col s12" id = "progress">
+          </div>
+        </div>
+      
+      </div>
+
+      <div id="espere" style="display:none">
+        <h5 class="center-align teal-text">Subiendo archivo...</h5>
+        <p class="center-align">Por favor espere, esto puede demorar un poco.</p>
+        <p class="center-align"> Aguarde hasta ver el mensaje de verificación aquí, o hasta recibir el correo electrónico.</p>
+        <div class="divider"></div>
+      </div>
+
+      <div id="success" style="display:none">
+        <h5 class="center-align teal-text">Archivo subido</h5>
+        <p class="center-align">Tu informe se ha subido correctamente.</p>
+        <p class="center-align"> Este formulario customizado se hizo con <a href="google.com">Google Apps Scripts</a>.</p>
+        <div class="divider"></div>
+        <p class="center-align"><a  class="btn btn-large" href="google.com" target="_blank">Cualquier consulta por mascampus</a></p>
+      </div>
+    
+    </form>
+    
+    <script>
+
+      var file, 
+          reader = new FileReader();
+      
+      
+      
+      reader.onloadend = function(event) {
+        if (event.target.error != null) {
+          showError("El archivo " + file.name + " no pudo ser leído.");
+          return;
+        } else {
+          // event.target.result contiene application/pdf base64 ...
+          //alert(event.target.result);
+          //console.log(event.target.result);
+          google.script.run
+            .withSuccessHandler(showSuccess)
+            // Pasar: data, file, nombre, turno, tp, docente, email
+            .uploadFileToGoogleDrive(event.target.result, file.name, $('input#nombre').val(), $('select#turno').val(), $('select#tp').val(), $('select#docente').val(), $('input#email').val(), $('input#dni').val());
+        }
+      };
+      
+      
+      function showSuccess(e) {
+        if (e === "OK") { 
+          $('#espere').hide();
+          $('#success').show();
+        } else {
+          showError(e);
+        }
+      }
+      
+      
+      function showWait() {
+        $('#forminner').hide();
+        $('#espere').show();
+      }
+      
+      
+      function submitForm() {
+        var fileInput = document.querySelector('#files');
+        var curFiles = fileInput.files;
+        
+        
+        if (curFiles.length === 0) {
+          showError("Por favor seleccione el archivo del informe");
+          return;
+        }
+        
+        file = curFiles[0];
+        
+        if (file.size > 1024 * 1024 * 5) {
+          showError("El tamaño del archivo debe ser < 5 Mb.");
+          return;
+        }
+
+        
+        var dni = $('input#dni').val();
+        if (dni < 1*1000000 || dni > 100*1000000) {
+          showError("Su DNI no parece correcto. Si es mayor a 100.000.000, remueva el dígito a la izquierda.");
+          return;
+        }
+
+        showMessage("Subiendo archivo, espere...");
+        
+        showWait();
+
+        reader.readAsDataURL(file);
+      }
+      
+      
+      function showError(e) {
+        $('#progress').addClass('red-text').html(e);
+      }
+      
+      
+      function showMessage(e) {
+        $('#progress').removeClass('red-text').html(e);
+      }
+      
+    </script>
+
+  </body>
+
+</html> 
