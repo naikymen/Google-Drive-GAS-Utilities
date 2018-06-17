@@ -2,7 +2,10 @@
 I reused the code here, adapted for my needs: https://ctrlq.org/code/19979-copy-folders-drive. Differences are that this works. Initially i could not get it to work without modification.
 ## What may be found here:
 Functions to change ownerships and copy files or folders, individually or recursively.
+
 Functions to log these actions in a Google Spreadsheet.
+
+An HTML-GAS form for uploading files publicly (w/o asking the submitter to log in).
 
 # Usage (Simple Copy)
 1. Check that it will do what you need.
@@ -20,12 +23,21 @@ I made this because of execution timeouts for large folders. It automatically gr
 5. Replace the source and target folder ID's with the ones that suit you.
 6. Give it permissions (for reading and/or writing) and run it.
 
-# Alternatives
+## Alternatives
 Use the Chrome OS file manager, it is much simpler if you can use it on your computer.
 I know no other ways to do this than installing Chrome OS, which may not be simpler at all.
 
-# Warnings
+## Warnings
 I have not tested this thoroughly with large folders and many files, only as much as 300 files per run, but not always.
 
-# Would like to do, but don´t know how
+## Would like to do, but don´t know how
 Have it work from the contextual menu that appears in the drive web interface, i.e. Right Click a folder > "Open With" > "Connect more apps".
+
+# Usage (Form)
+Choose a version and import the code and html to a google script.
+
+Change the variables as it suites your case.
+
+Deploy as web app, allowing anyone (or whoever) to execute the app as you.
+
+Embed the form in a Google Site, for example.
